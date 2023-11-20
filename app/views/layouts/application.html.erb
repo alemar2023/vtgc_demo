@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Devmail</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+
+
+  <style>
+      .pad_zero{
+          padding:0;
+          margin:0;
+      }
+      .bcksup{ background-color: #b3f0ff !important;}
+      .bckadm{ background-color: #ccf5ff !important;}
+      .bckusr{ background-color: #e6faff !important;}
+
+      .bcksup:hover, .bckadm:hover, .bckusr:hover{background-color:#ccffcc !important;}
+
+  </style>
+</head>
+
+<body>
+<%= render "layouts/header" %>
+
+<main class="container">
+  <p class="notice" style="margin: 0;padding:0;"><%= notice %> <br><%= alert %></p>
+
+  <%= yield %>
+</main>
+
+</body>
+</html>
+
+

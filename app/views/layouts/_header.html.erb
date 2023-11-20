@@ -1,0 +1,55 @@
+<style>
+    #element-to-toggle {
+        display: none;
+    }
+
+    p {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+</style>
+<nav class="navbar navbar-expand-lg bg-body-tertiary" id=xnavbar>
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <%= link_to "home", root_path, class: "nav-link active" %>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </a>
+          <ul class="dropdown-menu">
+            <li><%#= link_to "Brand", brands_path, class: "dropdown-item" %></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><%#= link_to "Expansion", expansions_path, class: "dropdown-item" %></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><%#= link_to "Category", categories_path, class: "dropdown-item" %></li>
+            <li><%#= link_to "Blueprint", blueprints_path, class: "dropdown-item" %></li>
+            <li><%#= link_to "Property", properties_path, class: "dropdown-item" %></li>
+          </ul>
+        </li>
+
+
+      </ul>
+      <form class="d-flex" role="search" style="margin-right:200px;display:none !important;">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+
+
+      <%= render "/layouts/manager/management" %>
+
+
+    </div>
+  </div>
+</nav>
