@@ -7,6 +7,7 @@
         padding: 0 !important;
         margin: 0 !important;
     }
+
 </style>
 <nav class="navbar navbar-expand-lg bg-body-tertiary" id=xnavbar>
   <div class="container-fluid">
@@ -29,13 +30,14 @@
             <li>
               <hr class="dropdown-divider">
             </li>
-            <li><%#= link_to "Expansion", expansions_path, class: "dropdown-item" %></li>
+            <li><%= link_to "About", pages_about_path, class: "dropdown-item" %></li>
+            <li><%= link_to "Expansion", pages_about_path, class: "dropdown-item" %></li>
             <li>
               <hr class="dropdown-divider">
             </li>
-            <li><%#= link_to "Category", categories_path, class: "dropdown-item" %></li>
-            <li><%#= link_to "Blueprint", blueprints_path, class: "dropdown-item" %></li>
-            <li><%#= link_to "Property", properties_path, class: "dropdown-item" %></li>
+            <li><%= link_to "Category", pages_about_path, class: "dropdown-item" %></li>
+            <li><%= link_to "Items", pages_about_path, class: "dropdown-item" %></li>
+            <li><%= link_to "Property", pages_about_path, class: "dropdown-item" %></li>
           </ul>
         </li>
 
@@ -47,7 +49,7 @@
       </form>
 
 
-      <%= render "/layouts/manager/management" %>
+      <%= render "/layouts/management" %>
 
 
     </div>
