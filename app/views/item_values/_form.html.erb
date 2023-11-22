@@ -1,0 +1,29 @@
+<p> Hello <%= current_user.first_name %> !</p>
+
+<%= form_with(model: [@item, @item_value]) do |form| %>
+
+  <% if item_value.errors.any? %>
+    <div style="color:#770000">
+      <h3><%= pluralize(item_value.errors.count, "error") %>, prohibited this item value from being saved:</h3>
+
+      <ul>
+        <%= item_value.errors.each do |error| %>
+          <li><%= error.message %></li>
+
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= form.hidden_field :item_id, value: @item.id %>
+  <div>
+    <div>
+      <%= form.collection_select(:property_id, all_properties, :id, :name, { prompt: "Seleziona una Property" }, class: "form-control") %>
+
+    </div>
+
+    <%= form.label :'Inserisci il valore', style: "display: block" %>
+    <%= form.text_field :value %>
+  </div>
+
+  <%= form.submit  %>
+<% end %>

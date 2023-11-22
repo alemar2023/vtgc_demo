@@ -1,0 +1,80 @@
+<p style="color:green"><%= notice %></p>
+<%= link_to "New Item", new_item_path, class: "btn btn-success", style: "float:right;" %>
+<h2> Blueprints</h2>
+<div id="items" style="display: grid;grid-template-columns: 500px 250px; ">
+  <div style="grid-column: 1 / span 2">
+    <hr>
+  </div>
+  <% @items.each do |item| %>
+    <div>
+      <div id="<%= dom_id item %>" style="display:grid;grid-template-columns: 110px auto;grid-row: 1 / span 2;">
+        <div class="img" style="padding:5px;">
+          <%= image_tag "armed.jpg", style: "width:100px;height:150px" %>
+        </div>
+        <div>
+          <p>
+            <strong>Id:</strong>
+            <%= item.id %>
+          </p>
+          <p>
+            <strong>Name:</strong>
+            <%= item.en_translation&.name if item.en_translation %>
+
+          </p>
+          <p>
+            <strong>Category:</strong>
+            <%= item.category.name %>
+          </p>
+
+          <p>
+            <strong>Brand:</strong>
+            <!-- prendo il nome dalla query eseguita all'origine di index nel controller,
+             BRAND è OPZIONALE MA collegato ad expansion (se c'è una esxpansion deve esserci il BRAND collegato
+
+             -->
+            <%= item.brand.name if item.brand %>
+          </p>
+
+
+          <p>
+            <strong>Expansion:</strong>
+            <%= item.expansion.name if item.expansion %>
+          </p>
+
+
+
+
+          <% if item.item_values.any? %>
+
+            <% item.item_values.each do |item_value| %>
+              <% if item_value.property.name != 'rarity'  %>
+                <p>
+                  <strong style="text-transform: capitalize;"><%= item_value.property.name %>:</strong>
+                  <%= item_value.value %>
+                </p>
+              <% end %>
+            <% end %>
+
+          <% else %>
+            <p>No item values available for this blueprint.</p>
+          <% end %>
+
+
+
+          <% if  item.rarity&.value? %>
+
+            <p style="color:red"><strong>Rarity:</strong> <%= item.rarity&.value %></p>
+          <% end %>
+
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;align-items: center;justify-content: center">
+      <%= link_to "show this item", blueprint, class: "btn btn-primary" %>
+    </div>
+    <div style="grid-column: 1 / span 2">
+      <hr>
+    </div>
+  <% end %>
+</div>
+

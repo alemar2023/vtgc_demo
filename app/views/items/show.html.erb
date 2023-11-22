@@ -1,0 +1,20 @@
+
+<div id="show_items"  style="display: grid;grid-template-columns: 500px 250px;  grid-auto-rows: 36px !important;">
+  <div>
+    <%= render @item %>
+  </div>
+  <div style="display: grid;row-gap:3px;">
+    <%= link_to "back to item", blueprints_path , class: "btn btn-primary"%>
+    <br>
+    <%= link_to "edit this item", edit_blueprint_path(@item) , class: "btn btn-secondary"%>
+
+    <%= link_to "New_translation", new_item_item_i18ns_path(:item_id => @item.id) , class: "btn btn-secondary"%>
+
+
+    <%= link_to "New Value", new_item_item_value_path(:blueprint_id => @item.id) , class: "btn btn-secondary"%>
+
+    <br>
+    <%= button_to("destroy this blueprint",  @blueprint,  method: :delete,  data: { turbo_method: 'delete', turbo_confirm: 'Really Destroy?' } , class: "btn btn-danger" , style: "width:100%" ) %>
+
+  </div>
+</div>

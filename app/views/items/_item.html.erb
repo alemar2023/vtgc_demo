@@ -1,0 +1,71 @@
+<div id="<%= dom_id item %>" style="display:grid;grid-template-columns: 110px auto;grid-row: 1 / span 2;">
+  <div class="img" style="padding:5px;">
+    <%= image_tag "armed.jpg" , style: "width:100px;height:150px" %>
+  </div>
+  <div>
+    <p>
+      <strong>Id:</strong>
+      <%= item.id %>
+    </p>
+    <p>
+      <strong>Name:</strong>
+      <%= item.item_i18ns.find_by(locale: "en")&.name if item.item_i18ns %>
+    </p>
+    <p>
+      <strong>Category:</strong>
+      <%= item.category.name %>
+    </p>
+
+    <p>
+      <strong>Brand:</strong>
+      <!-- prendo il nome dalla query eseguita all'origine di index nel controller,
+       BRAND è OPZIONALE MA collegato ad expansion (se c'è una esxpansion deve esserci il BRAND collegato
+
+       -->
+      <%= item.brand.name if item.brand %>
+    </p>
+
+
+    <p>
+      <strong>Expansion:</strong>
+      <%= item.collection.name if item.collection %>
+    </p>
+    <p>
+
+
+    <hr>
+    <p>Values</p>
+    <table>
+
+      <tbody>
+      <% @blueprint_values.each do |value| %>
+        <tr>
+          <td><strong><%= value.property.name %></strong></td>
+          <td><%= value.value %></td>
+          <td><%= link_to "Edit",  edit_blueprint_blueprint_value_path(value.blueprint_id, value.id) %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+
+
+
+
+
+    <hr>
+    <p><strong>Translation</strong></p>
+    <table>
+      <tbody>
+      <% @blueprint_translations.each do |translation| %>
+        <tr>
+          <td><%= translation.name %></td>
+          <!--<td><%#= translation.description %></td>-->
+          <td>| <%= translation.locale %></td>
+          <td><%= link_to "Edit",  edit_blueprint_blueprint_translation_path(translation.blueprint_id, translation.id) %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+    </p>
+  </div>
+</div>

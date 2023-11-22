@@ -1,0 +1,2 @@
+      invoke  active_record
+      create    db/migrate/20231121121515_create_item_i18.rb

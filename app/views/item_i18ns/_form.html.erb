@@ -1,0 +1,41 @@
+<p> Hello <%= current_user.first_name %> !</p>
+<%= form_with(model: [@item, @item_i18n]) do |form| %>
+
+  <% if item_i18n.errors.any? %>
+    <div style="color:#770000">
+      <h3><%= pluralize(item_i18n.errors.count, "error") %>, prohibited this item translation from being saved:</h3>
+
+      <ul>
+        <%= item_i18n.errors.each do |error| %>
+          <li><%= error.message %></li>
+
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <%= form.hidden_field :item_id, value: @item.id %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+  <div>
+    <%= form.label :locale %>
+    <%= form.select :locale,
+                    options_for_select(all_locales_for_select, @item_i18n.locale),
+                    { include_blank: 'Select the language' },
+                    class: 'form-control'
+    %>
+
+  </div>
+
+
+
+
+  <div>
+    <%= form.submit %>
+  </div>
+
+<% end %>

@@ -1,0 +1,26 @@
+<div id= "<%= dom_id item_i18n %>">
+  <p>
+    <strong>Name:</strong>
+    <%= item_i18n.id %>
+  </p>
+  <p>
+    <strong>Category:</strong>
+    <%=  item_i18n.name%>
+  </p>
+
+  <p>
+    <strong>Brand:</strong>
+    <!-- prendo il nome dalla query eseguita all'origine di index nel controller,
+     BRAND è OPZIONALE MA collegato ad expansion (se c'è una esxpansion deve esserci il BRAND collegato
+
+     -->
+    <%= item_i18n.item.item_id if item_i18n.item %>
+  </p>
+
+
+  <p>
+    <strong>Expansion:</strong>
+    <%= item.collection.name if item.collection %>
+  </p>
+
+</div>

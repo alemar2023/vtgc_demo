@@ -1,5 +1,19 @@
 Rails.application.routes.draw do
+
+
   devise_for :users
+  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  resources :categories
+  resources :brands
+  
+  resources :items do
+    resources :item_i18ns
+    resources :item_values
+  end
+
+  resources :collections
+  resources :properties
+
   get 'pages/home'
   get 'pages/about'
   get 'pages/contact'

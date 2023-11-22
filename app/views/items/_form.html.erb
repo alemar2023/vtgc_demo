@@ -1,0 +1,79 @@
+<p> Hello <%= current_user.first_name %> !</p>
+<%= form_with(model: item) do |form| %>
+
+  <% if item.errors.any? %>
+    <div style="color:#770000">
+      <h3><%= pluralize(item.errors.count, "error") %>, prohibited this item from being saved:</h3>
+
+      <ul>
+        <%= item.errors.each do |error| %>
+          <li><%= error.message %></li>
+
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <%#= form.hidden_field :item_id, valUE: @item.id %>
+
+  <div>
+    <%= form.label :category_id %>
+    <%= form.collection_select :category_id, all_categories, :id, :name, {include_blank: "Select a Category"}%>
+
+  </div>
+
+  <div>
+    <%= form.label :brand_id %>
+    <%= form.collection_select :brand_id, all_brands, :id, :name , {include_blank: "Select a Brand"}%>
+  </div>
+
+  <div>
+    <%= form.label :collection_id %>
+    <%= form.collection_select :collection_id, all_collections ,:id, :name , {include_blank: "Select a Collection"}%>
+  </div>
+  <br><br>
+
+  <p><strong>Item translations fields</strong>  </p>
+  <div>
+
+
+
+    <%= form.fields_for :item_i18ns do |translation_form| %>
+      <div>
+        <%= translation_form.label :name %>
+        <%= translation_form.text_field :name %>
+      </div>
+
+      <div>
+        <%= translation_form.label :locale %>
+        <%= translation_form.select :locale, options_for_select(['en', 'fr', 'es']) %>
+        <!-- Replace options_for_select with your actual locales -->
+      </div>
+    <% end %>
+
+    <br><br>
+    <p><strong> Item values fields </strong></p>
+    <div>
+      <%= form.fields_for :item_values do |value_form| %>
+        <div>
+          <%= value_form.label :property_id %>
+          <%= value_form.collection_select :property_id, Property.all, :id, :name %>
+          <!-- Replace Property.all, :id, :name with your actual data -->
+        </div>
+
+        <div>
+          <%= value_form.label :value %>
+          <%= value_form.text_field :value %>
+        </div>
+      <% end %>
+    </div>
+
+  </div>
+
+  <div>
+    <br><br>
+    <%= form.submit %>
+  </div>
+
+<% end %>

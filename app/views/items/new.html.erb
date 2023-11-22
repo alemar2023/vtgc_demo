@@ -1,0 +1,8 @@
+<h2>New Item</h2>
+
+<p> Hello <%= current_user.first_name %> !</p>
+<%= render "form", item: @item %>
+<br>
+<div>
+  <%= link_to "back to items", items_path %>
+</div>
