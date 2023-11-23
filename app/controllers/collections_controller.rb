@@ -1,9 +1,9 @@
 class CollectionsController < ApplicationController
 
-  before_action :set_expansion, only: %i[ show edit update destroy]
+  before_action :set_collection, only: %i[ show edit update destroy]
   before_action :authenticate_user!, except: [:index, :show]
   def index
-    @collection = Collection.all.includes(:brand)
+    @collections = Collection.all.includes(:brand)
   end
 
   def show
@@ -17,11 +17,11 @@ class CollectionsController < ApplicationController
   end
 
   def create
-    @collection = Colelction.new(collection_params)
+    @collection = Collection.new(collection_params)
     respond_to do |format|
       if @collection.save
         format.html { redirect_to collections_url, notice: "Collection was successfully created" }
-        format.json { render :show, status: :created, location: @expansion }
+        format.json { render :show, status: :created, location: @collection }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @collection.errors, status: :unprocessable_entity }

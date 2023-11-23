@@ -26,18 +26,28 @@
             Dropdown
           </a>
           <ul class="dropdown-menu">
-            <li><%#= link_to "Brand", brands_path, class: "dropdown-item" %></li>
+            <li><%= link_to "Market Areas", areas_path, class: "dropdown-item" %></li>
+            <li><%= link_to "Brands", brands_path, class: "dropdown-item" %></li>
+            <li><%= link_to "Collections", collections_path, class: "dropdown-item" %></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><%= link_to "Property", properties_path, class: "dropdown-item" %></li>
+            <li><%= link_to "Category", categories_path, class: "dropdown-item" %></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><%= link_to "Items", items_path, class: "dropdown-item" %></li>
             <li>
               <hr class="dropdown-divider">
             </li>
             <li><%= link_to "About", pages_about_path, class: "dropdown-item" %></li>
-            <li><%= link_to "Expansion", pages_about_path, class: "dropdown-item" %></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><%= link_to "Category", pages_about_path, class: "dropdown-item" %></li>
-            <li><%= link_to "Items", pages_about_path, class: "dropdown-item" %></li>
-            <li><%= link_to "Property", pages_about_path, class: "dropdown-item" %></li>
+            <li><%= link_to "Contact", pages_contact_path, class: "dropdown-item" %></li>
+
+
+
+
+
           </ul>
         </li>
 

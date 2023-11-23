@@ -1,0 +1,8 @@
+
+<%= render @collection %>
+
+<div>
+  <%= link_to "edit this collection", edit_collection_path(@collection) %>
+  <%= link_to "back to collections", collections_path %>
+  <%= button_to("destroy this collection",  @collection,  method: :delete,  data: { turbo_method: 'delete', turbo_confirm: 'Really Destroy?' }   ) %>
+</div>

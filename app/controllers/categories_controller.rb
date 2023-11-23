@@ -3,21 +3,37 @@ class CategoriesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @categories = Category.all
+    @categories = Category.all.includes(:eng_translation, children: [:eng_translation, children: :eng_translation ], ).where(parent_id: nil)
+
+
   end
 
   def show
   end
   def new
     @category = Category.new
+    @category_i18n = @category.category_i18ns.build
+
   end
   def edit
   end
 
   def create
+
+
     @category = Category.new(category_params)
     respond_to do |format|
       if @category.save
+
+        name = category_params[:name].to_s
+        locale = category_params[:locale].to_s
+        category_id = category_params[:category_id].to_s
+
+
+        puts "nome: #{name}"
+        puts "locale: #{locale}"
+        puts "category_id: #{category_id}"
+         byebug
         format.html { redirect_to categories_path, notice: "Category was successfully created" }
         format.json { render :show , status: :created, location: @category}
       else
@@ -54,7 +70,7 @@ class CategoriesController < ApplicationController
   end
 
   def category_params
-    params.require(:category).permit(:name)
+    params.require(:category).permit(:parent_id, category_i18ns_attributes: [:id, :name, :locale])
   end
 
 

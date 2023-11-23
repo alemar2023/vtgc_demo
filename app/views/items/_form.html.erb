@@ -15,11 +15,11 @@
   <% end %>
 
 
-  <%#= form.hidden_field :item_id, valUE: @item.id %>
+  <%= form.text_field :item_id, valUE: @item.id %>
 
   <div>
-    <%= form.label :category_id %>
-    <%= form.collection_select :category_id, all_categories, :id, :name, {include_blank: "Select a Category"}%>
+    <%= form.label :area_id %>
+    <%= form.collection_select :area_id, all_areas, :id, :name, {include_blank: "Select a Market Area"}%>
 
   </div>
 
@@ -31,6 +31,12 @@
   <div>
     <%= form.label :collection_id %>
     <%= form.collection_select :collection_id, all_collections ,:id, :name , {include_blank: "Select a Collection"}%>
+  </div>
+
+  <div>
+    <%= form.label :category_id %>
+    <%= form.collection_select :category_id, all_categories, :id, :name, {include_blank: "Select a Category"}%>
+
   </div>
   <br><br>
 

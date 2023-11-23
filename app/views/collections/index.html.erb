@@ -1,0 +1,12 @@
+
+<h2> Collections </h2>
+<div id="collections">
+  <% @collections.each do |collection| %>
+    <%= render collection %>
+    <p>
+      <%= link_to "show this collection", collection %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New Collection", new_collection_path %>

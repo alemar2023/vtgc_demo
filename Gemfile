@@ -70,3 +70,5 @@ group :test do
 end
 
 gem "devise", "~> 4.9"
+
+gem "byebug", "~> 11.1", :groups => [:development, :test]

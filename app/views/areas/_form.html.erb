@@ -1,0 +1,24 @@
+<p>
+  Ciao <%= current_user.first_name %> !
+</p>
+<%= form_with(model: area) do |form| %>
+
+  <% if area.errors.any? %>
+    <div style="color:#770000">
+      <h3><%= pluralize(area.errors.count, " error") %>,  it is not possible to save this Area</h3>
+      <ul>
+        <% area.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+  <div style="margin-top:10px">
+    <%= form.submit   %>
+  </div>
+<% end %>

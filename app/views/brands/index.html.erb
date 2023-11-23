@@ -1,0 +1,12 @@
+
+<h2> Brands </h2>
+<div id="brands">
+  <% @brands.each do |brand| %>
+    <%= render brand %>
+    <p>
+      <%= link_to "show this brand", brand %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New Brand", new_brand_path %>

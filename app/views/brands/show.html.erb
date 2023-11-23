@@ -1,0 +1,8 @@
+
+<%= render @brand %>
+
+<div>
+  <%= link_to "edit this brand", edit_brand_path(@brand) %>
+  <%= link_to "back to brands", brands_path %>
+  <%= button_to "destroy this brand", @brand, method: :delete, data: { turbo_method: "delete", turbo_confirm: "Really destroy it?"} %>
+</div>

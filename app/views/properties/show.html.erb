@@ -1,0 +1,9 @@
+
+
+<%= render @property %>
+
+<div>
+  <%= link_to "edit this property", edit_property_path(@property) %>
+  <%= link_to "back to properties", properties_path %>
+  <%= button_to("destroy this property",  @property,  method: :delete,  data: { turbo_method: 'delete', turbo_confirm: 'Really destroy it?' }   ) %>
+</div>

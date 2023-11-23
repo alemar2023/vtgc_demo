@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_22_155644) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_23_123542) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -32,10 +32,21 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_22_155644) do
   end
 
   create_table "categories", force: :cascade do |t|
-    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_categories_on_name", unique: true
+    t.bigint "parent_id"
+  end
+
+  create_table "category_i18ns", force: :cascade do |t|
+    t.string "name"
+    t.string "locale"
+    t.bigint "category_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_category_i18ns_on_category_id"
+    t.index ["locale", "category_id"], name: "index_category_i18ns_on_locale_and_category_id", unique: true
+    t.index ["locale"], name: "index_category_i18ns_on_locale"
+    t.index ["name"], name: "index_category_i18ns_on_name"
   end
 
   create_table "collections", force: :cascade do |t|
@@ -76,6 +87,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_22_155644) do
     t.bigint "category_id", null: false
     t.bigint "brand_id"
     t.bigint "collection_id"
+    t.bigint "area_id", null: false
+    t.index ["area_id"], name: "index_items_on_area_id", unique: true
     t.index ["brand_id"], name: "index_items_on_brand_id"
     t.index ["category_id"], name: "index_items_on_category_id", unique: true
     t.index ["collection_id"], name: "index_items_on_collection_id"
@@ -86,6 +99,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_22_155644) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "type"
+    t.bigint "area_id"
+    t.index ["area_id"], name: "index_properties_on_area_id"
     t.index ["name"], name: "index_properties_on_name", unique: true
   end
 
@@ -119,6 +134,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_22_155644) do
   end
 
   add_foreign_key "brands", "areas"
+  add_foreign_key "category_i18ns", "categories"
   add_foreign_key "collections", "brands"
   add_foreign_key "item_i18ns", "items"
   add_foreign_key "item_values", "items"

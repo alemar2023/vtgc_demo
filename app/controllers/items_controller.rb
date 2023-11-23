@@ -4,8 +4,8 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @item = Item.all.includes(:category, :brand, :collection, :rarity, :property, :en_translation, item_values: :property)
-
+    @items = Item.all.includes(:area, :brand, :collection, :rarity, :property, :en_translation, item_values: :property)
+    #@items = Item.all
     #@items = Item.includes(blueprint_values: :property).all
   end
 
@@ -72,7 +72,7 @@ end
   # Only allow a list of trusted parameters through.
   def item_params
     params.require(:item).permit(
-      :id, :category_id, :brand_id, :collection_id,
+      :id, :area_id, :brand_id, :collection_id,
       item_i18ns_attributes: [:id, :name, :locale],
       item_values_attributes: [:id, :property_id, :value]
     )

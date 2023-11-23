@@ -1,0 +1,9 @@
+<p style="color:green"><%= notice %></p>
+
+<%= render @area %>
+
+<div style="display:flex;">
+  <%= link_to "edit this area", edit-area_path(@area) %>  &nbsp; &nbsp;
+  <%= link_to "elenco market areas", areas_path %>  &nbsp; &nbsp;
+  <%= button_to("destroy this brand", @brand, method: :delete , data: { turbo_method: ' delete', turbo_confirm: 'Really destroy it?'}) %>
+</div>

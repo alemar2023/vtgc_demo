@@ -4,7 +4,7 @@ class PropertiesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @properties = Property.all
+    @properties = Property.all.includes(:area)
   end
   def show
   end
@@ -49,16 +49,16 @@ class PropertiesController < ApplicationController
   end
 
   private
-=begin
+
   def set_item_value
     @item_value = ItemValue.find(params[:id])
   end
-=end
+
   def set_property
     @property = Property.find(params[:id])
   end
 
   def property_params
-    params.require(:property).permit(:name)
+    params.require(:property).permit(:name, :area_id)
   end
 end

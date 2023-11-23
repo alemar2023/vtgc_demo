@@ -3,7 +3,10 @@ Rails.application.routes.draw do
 
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  resources :categories
+  resources :areas
+  resources :categories do
+    resources :category_i18ns
+  end
   resources :brands
 
   resources :items do

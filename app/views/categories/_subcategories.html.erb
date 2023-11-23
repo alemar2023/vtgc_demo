@@ -1,0 +1,12 @@
+<!-- app/views/divisions/_subdivisions.html.erb -->
+
+<% if categories.present? %>
+  <ul>
+    <% categories.each do |subdivision| %>
+      <li>
+        <%= subdivision.eng_translation.name %>
+        <%= render 'categories/subcategoies', categories: subdivision.children %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

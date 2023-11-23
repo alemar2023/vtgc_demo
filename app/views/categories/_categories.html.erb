@@ -1,0 +1,8 @@
+<ul>
+  <% categories.each do |subcategory| %>
+    <li>
+      <%= subcategory.eng_translation.name %>
+      <%= render 'categories/subcategories', categories: subcategory.children %>
+    </li>
+  <% end %>
+</ul>

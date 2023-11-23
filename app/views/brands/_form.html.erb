@@ -1,0 +1,30 @@
+<p> Ciao <%= current_user.first_name %> !</p>
+<%= form_with(model: brand) do |form| %>
+
+  <% if brand.errors.any? %>
+    <div style="color:#770000">
+      <h3><%= pluralize(brand.errors.count, "error") %>, prohibited this brand from being saved:</h3>
+      <ul>
+        <%= brand.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display:block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+
+    <%= form.label :area_id %>
+    <%= form.collection_select :area_id, all_areas, :id, :name %>
+
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+
+<% end %>
