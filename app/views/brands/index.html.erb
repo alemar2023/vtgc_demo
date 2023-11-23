@@ -1,12 +1,27 @@
+<%= link_to "New ", new_brand_path, class: "btn btn-success", style: "float:right;" %>
 
-<h2> Brands </h2>
-<div id="brands">
+
+<div id="brands" style="display:grid;grid-template-columns: 200px 200px 100px 100px;border:1px solid #d6d6d6;padding:5px;width:612px;">
+  <div style="background-color: #cdcdcd;padding:10px 5px"><p><strong>Market Area</strong></p></div>
+  <div style="grid-column: 2 / span 3;background-color: #cdcdcd;;padding:10px 0"><p><strong>Brand</strong></p></div>
+
   <% @brands.each do |brand| %>
-    <%= render brand %>
-    <p>
-      <%= link_to "show this brand", brand %>
-    </p>
+    <div style="grid-column: 1 /span 2">
+      <%= render brand %>
+    </div>
+    <div>
+      <p style="line-height:45px">
+        <%= link_to "show ", brand, class: "btn btn-success" %>
+      </p>
+    </div>
+    <div>
+      <p style="line-height:45px">
+        <%= link_to "categorie ", brand, class: "btn btn-primary" %>
+      </p>
+    </div>
+    <div style="grid-column: 1 / span 4">
+      <hr style="margin:0;padding:0;">
+    </div>
+
   <% end %>
 </div>
-
-<%= link_to "New Brand", new_brand_path %>

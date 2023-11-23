@@ -1,10 +1,11 @@
-<div id= "<%= dom_id brand %>">
-  <p>
-    <strong>Name:</strong>
-    <%= brand.name %>
-  </p>
-  <p>
-    <strong>Area:</strong>
+<div id= "<%= dom_id brand %>" style="display:grid;grid-template-columns: 200px 200px;grid-auto-rows: 50px;align-content: center">
+  <p style="line-height:45px">
+
     <%= brand.area.name %>
   </p>
+  <p style="line-height:45px">
+
+   <srtong> <%= brand.name %></srtong>
+  </p>
+
 </div>

@@ -1,5 +1,5 @@
 class BrandsController < ApplicationController
-
+  #layout 'brandx'
   before_action :set_brand, only: %i[ show edit update destroy]
   before_action :authenticate_user!, except: [:index, :show]
   def index
