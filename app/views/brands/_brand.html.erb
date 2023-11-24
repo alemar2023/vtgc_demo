@@ -1,11 +1,38 @@
-<div id= "<%= dom_id brand %>" style="display:grid;grid-template-columns: 200px 200px;grid-auto-rows: 50px;align-content: center">
-  <p style="line-height:45px">
 
-    <%= brand.area.name %>
-  </p>
-  <p style="line-height:45px">
 
-   <srtong> <%= brand.name %></srtong>
-  </p>
+<div id="<%= dom_id brand %>" >
+  <div id= "<%= dom_id brand %>" style="display:grid;grid-template-columns: 200px 200px;grid-auto-rows: 50px;align-content: center">
+    <p style="line-height:45px">
 
-</div>
+      <%= brand.area.name %>
+    </p>
+
+  </div>
+  <div class="img" style="padding:5px;">
+    <%= link_to image_tag(brand.image_as_thumbnail), brand.image %>
+  </div>
+  <div>
+    <p>
+      <strong>♥</strong>
+      <%= brand.name %>
+   <br>
+      <%  brand.body %>
+    </p>
+  </div>
+
+    <hr>
+
+    <br><br>
+
+
+  </div>
+
+
+
+<% brand.pictures_as_thumbanails.each do |picture| %>
+
+  <%= link_to image_tag(picture), picture  %>
+<% end %>
+
+
+

@@ -1,14 +1,30 @@
-<p style="color:green"><%= notice %></p>
 
-<h2> Market Areas</h2>
+<h4> Market Areas</h4>
 
 <div id="brands">
   <% @areas.each do |area| %>
-    <%= render area %>
+    <div id="<%= dom_id area %>">
+      <p>
+        <strong>♥</strong>
+        <%= area.name %>
+      </p>
 
-    <%= link_to "Mostra Area", area   %>
 
-  <% end %>
+
+
+      <%= link_to image_tag(area.image_as_thumbnail), area %>
+
+
+
+    </div>
+
+ 
+
+
+
+
+<% end %>
 </div>
 
 <%= link_to "New Area" , new_area_path  %>
+

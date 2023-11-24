@@ -23,6 +23,26 @@
     <%= form.collection_select :area_id, all_areas, :id, :name %>
 
   </div>
+
+
+  <div>
+    <%= form.label :body, style: "display: block" %>
+    <%= form.rich_text_area :body %>
+  </div>
+
+
+  <div>
+    <%= form.label :image %>
+    <%= form.file_field :image%>
+  </div>
+
+  <div>
+    <%= form.label :pictures %>
+    <%= form.file_field :pictures, multiple: true%>
+  </div>
+
+
+
   <div>
     <%= form.submit %>
   </div>

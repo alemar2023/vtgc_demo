@@ -25,6 +25,7 @@ class CategoriesController < ApplicationController
     respond_to do |format|
       if @category.save
 
+=begin
         name = category_params[:name].to_s
         locale = category_params[:locale].to_s
         category_id = category_params[:category_id].to_s
@@ -34,6 +35,7 @@ class CategoriesController < ApplicationController
         puts "locale: #{locale}"
         puts "category_id: #{category_id}"
          byebug
+=end
         format.html { redirect_to categories_path, notice: "Category was successfully created" }
         format.json { render :show , status: :created, location: @category}
       else
@@ -42,6 +44,8 @@ class CategoriesController < ApplicationController
       end
     end
   end
+
+
 
   def update
     respond_to do |format|

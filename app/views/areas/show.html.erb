@@ -1,9 +1,16 @@
-<p style="color:green"><%= notice %></p>
 
-<%= render @area %>
+<div id="show _area"  style="display: grid;grid-template-columns: 500px 250px;  grid-auto-rows: 36px !important;">
+  <div>
 
-<div style="display:flex;">
-  <%= link_to "edit this area", edit-area_path(@area) %>  &nbsp; &nbsp;
-  <%= link_to "elenco market areas", areas_path %>  &nbsp; &nbsp;
-  <%= button_to("destroy this brand", @brand, method: :delete , data: { turbo_method: ' delete', turbo_confirm: 'Really destroy it?'}) %>
+    <%= render @area %>
+  </div>
+ <div>
+  <div style="display: grid;row-gap:3px;">
+    <%= link_to "edit ", edit_area_path(@area), class: "btn btn-primary"%>
+    <%= link_to "elenco", areas_path , class: "btn btn-secondary"%>
+    <%= button_to("destroy",  @area,  method: :delete,  data: { turbo_method: 'delete', turbo_confirm: 'Really destroy it?' }    , class: "btn btn-danger" , style: "width:100%" ) %>
+  </div>
+ </div>
 </div>
+
+

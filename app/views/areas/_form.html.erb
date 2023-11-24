@@ -18,6 +18,24 @@
     <%= form.label :name, style: "display: block" %>
     <%= form.text_field :name %>
   </div>
+
+  <div>
+    <%= form.label :body, style: "display: block" %>
+    <%= form.rich_text_area :body %>
+  </div>
+
+
+  <div>
+    <%= form.label :image %>
+    <%= form.file_field :image%>
+  </div>
+
+  <div>
+    <%= form.label :pictures %>
+    <%= form.file_field :pictures, multiple: true%>
+  </div>
+
+
   <div style="margin-top:10px">
     <%= form.submit   %>
   </div>

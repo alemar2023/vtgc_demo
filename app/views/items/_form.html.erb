@@ -38,6 +38,12 @@
     <%= form.collection_select :category_id, all_categories, :id, :name, {include_blank: "Select a Category"}%>
 
   </div>
+
+  <div>
+    <%= form.label :image %>
+    <%= form.file_field :image%>
+  </div>
+
   <br><br>
 
   <p><strong>Item translations fields</strong>  </p>

@@ -3,11 +3,19 @@ Rails.application.routes.draw do
 
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  resources :areas
+  resources :areas do
+    member do
+      get 'brands', to: 'areas#brands', as: 'area_brands'
+    end
+  end
+
+  resources :brands do
+
+  end
+
   resources :categories do
     resources :category_i18ns
   end
-  resources :brands
 
   resources :items do
     resources :item_i18ns
@@ -16,6 +24,9 @@ Rails.application.routes.draw do
 
   resources :collections
   resources :properties
+
+
+
 
   get 'pages/home'
   get 'pages/about'

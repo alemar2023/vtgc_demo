@@ -72,9 +72,10 @@ end
   # Only allow a list of trusted parameters through.
   def item_params
     params.require(:item).permit(
-      :id, :area_id, :brand_id, :collection_id,
+      :id, :area_id, :brand_id, :collection_id, :image,
       item_i18ns_attributes: [:id, :name, :locale],
-      item_values_attributes: [:id, :property_id, :value]
+      item_values_attributes: [:id, :property_id, :value],
+
     )
   end
 end

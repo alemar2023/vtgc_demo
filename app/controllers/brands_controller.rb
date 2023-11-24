@@ -6,6 +6,8 @@ class BrandsController < ApplicationController
     @brands = Brand.all.includes(:area)
   end
   def show
+    @brands = Brand.find(params[:id])
+    @collections = @brand.collections
   end
 
   def new
@@ -55,7 +57,7 @@ class BrandsController < ApplicationController
     @brand = Brand.find(params[:id])
   end
   def brand_params
-    params.require(:brand).permit(:name, :area_id)
+    params.require(:brand).permit(:name, :area_id,  :body, :image, pictures:[])
   end
 
 end

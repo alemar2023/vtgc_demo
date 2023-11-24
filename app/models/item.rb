@@ -20,6 +20,25 @@ class Item < ApplicationRecord
 
   has_one :rarity, -> { joins(:property).where(properties: { name: 'rarity' }) }, class_name: 'ItemValue'
 
+
+
+  has_one_attached :image
+  has_many_attached :pictures
+  has_rich_text :body
+
+  def image_as_thumbnail
+    image.variant(resize_to_limit:[150, 150]).processed
+  end
+  def pictures_as_thumbanails
+    pictures.map do |picture|
+      picture.variant(resize_to_limit: [100, 100]).processed
+    end
+  end
+
+
+  def image_as_thumbnail_small
+    image.variant(resize_to_limit:[100, 100]).processed
+  end
   def valid_brand?
 
     # se collection presente anche il brand deve essere presente

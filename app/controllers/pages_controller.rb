@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   def home
+    @brands = Brand.all.includes(:area)
   end
 
   def about

@@ -1,4 +1,8 @@
 <div id= "<%= dom_id collection %>">
+
+  <div class="img" style="padding:5px;">
+    <%= link_to image_tag(collection.image_as_thumbnail), collection.image %>
+  </div>
   <p>
     <strong>Name:</strong>
     <%= collection.name %>
@@ -7,4 +11,20 @@
     <strong>Brand:</strong>
     <%= collection.brand.name %>
   </p>
+
+  <p>
+    <%= collection.body %>
+  </p>
+</div>
+
+
+
+
+
+<br><br>
+<% collection.pictures_as_thumbanails.each do |picture| %>
+
+  <%= link_to image_tag(picture), picture  %>
+<% end %>
+
 </div>

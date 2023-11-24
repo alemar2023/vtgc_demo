@@ -1,8 +1,22 @@
 
-<h2> Collections </h2>
+<h4> Collections </h4>
 <div id="collections">
   <% @collections.each do |collection| %>
-    <%= render collection %>
+    <div id="<%= dom_id collection %>">
+      <p>
+        <strong>♥</strong>
+        <%= collection.name %>
+      </p>
+
+
+
+      <%= link_to image_tag(collection.image_as_thumbnail), collection %>
+
+
+    </div>
+
+
+
     <p>
       <%= link_to "show this collection", collection %>
     </p>

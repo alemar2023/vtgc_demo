@@ -1,11 +1,38 @@
-<div id="<%= dom_id area %>">
-  <p>
-    <strong>Name:</strong>
-    <%= area.name %>
-  </p>
-  <p>
-    <strong>Id:</strong>
-    <%= area.id %>
-  </p>
+<div id="<%= dom_id area %>" style="display:grid;grid-template-columns: 200px 280px;grid-row: 1 / span 2;">
+  <div class="img" style="padding:5px;">
+    <%= link_to image_tag(area.image_as_thumbnail), area.image %>
+  </div>
+    <div>
+      <p>
+        <strong>♥</strong>
+        <%= area.name %>
+      </p>
+      <p>
+        <%= area.body %>
+      </p>
 
-</div>
+
+      <hr>
+       
+<p>
+ 
+</p>
+     
+
+    </div>
+
+
+
+
+
+
+
+<br><br>
+    <% area.pictures_as_thumbanails.each do |picture| %>
+
+    <%= link_to image_tag(picture), picture  %>
+    <% end %>
+
+  </div>
+
+

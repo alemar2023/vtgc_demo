@@ -19,7 +19,7 @@ class AreasController < ApplicationController
 
     respond_to do |format|
       if @area.save
-        format.html { redirect_to brand_url(@area), notice: "Market Area successfully created." }
+        format.html { redirect_to area_url(@area), notice: "Market Area successfully created." }
         format.json { render :show, status: :created, location: @area }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -30,8 +30,8 @@ class AreasController < ApplicationController
 
   def update
     respond_to do |format|
-      if @area.update(arae_params)
-        format.html { redirect_to brands_url, notice: "Market Area successfully updated."}
+      if @area.update(area_params)
+        format.html { redirect_to areas_url, notice: "Market Area successfully updated."}
         format.json { render :sho, status: :ok, location: @area}
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -55,7 +55,7 @@ class AreasController < ApplicationController
     @area = Area.find(params[:id])
   end
   def area_params
-    params.require(:area).permit(:name)
+    params.require(:area).permit(:name, :body, :image, pictures:[])
   end
 
 end
