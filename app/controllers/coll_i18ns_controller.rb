@@ -5,7 +5,7 @@ class CollI18nsController < ApplicationController
 
 
   def new
-    @blueprint_translation = BlueprintTranslation.new
+    @coll_i18n = CollI18n.new
   end
   def edit
   end
@@ -16,7 +16,7 @@ class CollI18nsController < ApplicationController
 
     respond_to do |format|
       if @coll_i18n.save
-        format.html { redirect_to blueprint_path(@collection), notice: "Blueprint Translation successfully created" }
+        format.html { redirect_to collection_path(@collection), notice: "Blueprint Translation successfully created" }
         format.json { render json: @coll_i18n, status: :created }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -28,8 +28,8 @@ class CollI18nsController < ApplicationController
 
   def update
     respond_to do |format|
-      if @coll_i18n.update(blueprint_translation_params)
-        format.html { redirect_to blueprint_path(@collection), notice: "Blueprint Translation successfully updated" }
+      if @coll_i18n.update(coll_i18n_params)
+        format.html { redirect_to collecttion_path(@collection), notice: "Blueprint Translation successfully updated" }
         format.json { render json: @coll_i18n, status: :created }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -49,7 +49,7 @@ class CollI18nsController < ApplicationController
   def set_coll_i18n
     @coll_i18n = CollI18n.find(params[:id])
   end
-  def blueprint_translation_params
+  def set_coll_i18n_params
     params.require(:coll_i18n).permit(:collection_id, :name, :locale)
   end
 

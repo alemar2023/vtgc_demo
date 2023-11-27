@@ -22,7 +22,9 @@ Rails.application.routes.draw do
     resources :item_values
   end
 
-  resources :collections
+  resources :collections do
+    resources :coll_i18ns
+  end
   resources :properties
 
 

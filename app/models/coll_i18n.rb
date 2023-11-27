@@ -1,3 +1,4 @@
+include LocalesHelper
 class CollI18n < ApplicationRecord
 
   enum locale: all_locales.index_by(&:itself), _prefix: :locale

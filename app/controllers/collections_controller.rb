@@ -7,10 +7,13 @@ class CollectionsController < ApplicationController
   end
 
   def show
+    @collection = Collection.find(params[:id])
+    @coll_i18ns = @collection.coll_i18ns
   end
 
   def new
     @collection = Collection.new
+    @collection.coll_i18ns.build
   end
 
   def edit
@@ -57,7 +60,8 @@ class CollectionsController < ApplicationController
   end
 
   def collection_params
-    params.require(:collection).permit(:name, :brand_id, :body, :image, pictures:[])
+    params.require(:collection).permit(:name, :brand_id, :body, :image, pictures:[],
+                                       coll_i18ns_attributes: [:id, :name, :locale],)
   end
 
 

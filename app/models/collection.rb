@@ -5,7 +5,8 @@ class Collection < ApplicationRecord
 
   validates :name, presence: true
   validates :name, :uniqueness => {scope: :brand}
-
+  accepts_nested_attributes_for :coll_i18ns
+  has_one :en_translation, -> { where(locale: "en")} , class_name: "CollI18n"
 
 
 
