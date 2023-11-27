@@ -3,11 +3,11 @@
 
 
 
-<div id="brands" style="display:grid;grid-template-columns: 200px 200px 200px 200px;border:1px solid #d6d6d6;padding:5px;width:612px;">
+<div id="brands" style="display:grid;grid-template-columns: auto auto auto auto;border:1px solid #d6d6d6;padding:5px;width:auto;">
 
 
   <% @brands.each do |brand| %>
-    <div class="img" style="padding:5px;">
+    <div class="img" style="padding:5px;height:180px;display: flex;justify-content: center;align-items: center;border:1px solid navy">
       <%= link_to image_tag(brand.image_as_thumbnail), brand  %>
     </div>
 

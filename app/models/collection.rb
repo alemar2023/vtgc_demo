@@ -1,6 +1,7 @@
 class Collection < ApplicationRecord
   belongs_to :brand
   has_many :items
+  has_many :coll_i18ns
 
   validates :name, presence: true
   validates :name, :uniqueness => {scope: :brand}

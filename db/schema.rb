@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_24_162451) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_27_155253) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -86,6 +86,18 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_24_162451) do
     t.index ["locale", "category_id"], name: "index_category_i18ns_on_locale_and_category_id", unique: true
     t.index ["locale"], name: "index_category_i18ns_on_locale"
     t.index ["name"], name: "index_category_i18ns_on_name"
+  end
+
+  create_table "coll_i18ns", force: :cascade do |t|
+    t.bigint "collection_id", null: false
+    t.string "name", null: false
+    t.string "locale", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["collection_id"], name: "index_coll_i18ns_on_collection_id"
+    t.index ["locale", "collection_id"], name: "index_coll_i18ns_on_locale_and_collection_id", unique: true
+    t.index ["locale"], name: "index_coll_i18ns_on_locale"
+    t.index ["name"], name: "index_coll_i18ns_on_name"
   end
 
   create_table "collections", force: :cascade do |t|
@@ -175,6 +187,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_24_162451) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "brands", "areas"
   add_foreign_key "category_i18ns", "categories"
+  add_foreign_key "coll_i18ns", "collections"
   add_foreign_key "collections", "brands"
   add_foreign_key "item_i18ns", "items"
   add_foreign_key "item_values", "items"

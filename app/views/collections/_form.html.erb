@@ -41,6 +41,23 @@
     <%= form.file_field :pictures, multiple: true%>
   </div>
 
+  <p><strong> Coll Translations fields</strong>  </p>
+  <div>
+
+
+
+    <%= form.fields_for :blueprint_translations do |translation_form| %>
+      <div>
+        <%= translation_form.label :name %>
+        <%= translation_form.text_field :name %>
+      </div>
+
+      <div>
+        <%= translation_form.label :locale %>
+        <%= translation_form.select :locale, options_for_select(['en', 'fr', 'es']) %>
+        <!-- Replace options_for_select with your actual locales -->
+      </div>
+    <% end %>
 
   <div>
     <%= form.submit %>

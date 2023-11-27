@@ -9,7 +9,7 @@ class Item < ApplicationRecord
   has_many :item_products
 
   # accepts_nested_attributes_for :blueprint_translations
-  accepts_nested_attributes_for :item_i18ns, :item_values
+  accepts_nested_attributes_for :item_i18ns, :item_values, :collection
 
   # has_many :properties, through: :blueprint_values
   has_one :en_translation, -> { where(locale: "en") }, class_name: "ItemI18n"
