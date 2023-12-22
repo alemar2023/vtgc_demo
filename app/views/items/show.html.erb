@@ -17,4 +17,55 @@
     <%= button_to("destroy this blueprint",  @blueprint,  method: :delete,  data: { turbo_method: 'delete', turbo_confirm: 'Really Destroy?' } , class: "btn btn-danger" , style: "width:100%" ) %>
 
   </div>
+
+  <!-- app/views/items/index.html.erb -->
+  <h1>Items with Labels and Categories</h1>
+
+  <!-- items/show.html.erb -->
+  <h1><%= @item.en_translation.name %></h1>
+
+  <dl>
+    <dt>Brand:</dt>
+    <dd><%= @item.brand.en_translation.name %></dd>
+
+    <dt>Collection:</dt>
+    <dd><%= @item.collection.en_translation.name %></dd>
+
+    <dt>Item:</dt>
+    <dd><%= @item.en_translation.name %></dd>
+  </dl>
+
+  <%= link_to 'Edit', edit_item_path(@item) %>
+  <%= link_to 'Back', items_path %>
+
+
+
+
 </div>
+
+<p>--------------------</p>
+<!-- app/views/items/show.html.erb -->
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>ID:</strong>
+  <%= @item.id %>
+</p>
+
+<p>
+  <strong>Brand:</strong>
+  <%= @brand_name %>
+</p>
+
+<p>
+  <strong>Collection:</strong>
+  <%= @collection_name %>
+</p>
+
+<p>
+  <strong>Item:</strong>
+  <%= @item_name %>
+</p>
+
+<%= link_to 'Edit', edit_item_path(@item) %> |
+<%= link_to 'Back', items_path %>

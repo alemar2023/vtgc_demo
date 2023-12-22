@@ -10,6 +10,8 @@ class Brand < ApplicationRecord
   has_many_attached :pictures
   has_rich_text :body
 
+  has_one :enbra_translation, -> { where(locale: "en")} , class_name: "BrandI18n"
+
   def image_as_thumbnail
     image.variant(resize_to_limit:[150, 150]).processed
   end

@@ -1,28 +1,43 @@
-<!-- app/views/items/_form.html.erb -->
-<%= form_with(model: @item, local: true) do |form| %>
-  <% if @item.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@item.errors.count, 'error') %> prohibited this item from being saved:</h2>
+<p> Hello <%= current_user.first_name %> !</p>
+<%= form_with(model: item) do |form| %>
+
+  <% if item.errors.any? %>
+    <div style="color:#770000">
+      <h3><%= pluralize(item.errors.count, "error") %>, prohibited this item from being saved:</h3>
 
       <ul>
-        <% @item.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+        <%= item.errors.each do |error| %>
+          <li><%= error.message %></li>
+
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
+
+  <%= form.text_field :id, valUE: @item.id %>
+
+  <div>
+    <%= form.label :area_id %>
+    <%= form.collection_select :area_id, all_areas, :id, :name, {include_blank: "Select a Market Area"}%>
+
+  </div>
+
+  <div>
     <%= form.label :brand_id %>
-    <%= form.collection_select :brand_id, Brand.all, :id, :name, prompt: true %>
+    <%= form.collection_select :brand_id, all_brands, :id, :name , {include_blank: "Select a Brand"}%>
   </div>
 
-  <div class="field">
+  <div>
     <%= form.label :collection_id %>
-    <%= form.collection_select :collection_id, Collection.all, :id, :name, prompt: true %>
+    <%= form.collection_select :collection_id, all_collections ,:id, :name , {include_blank: "Select a Collection"}%>
   </div>
 
-  <!-- Add more fields as needed -->
+  <div>
+    <%= form.label :category_id %>
+    <%= form.collection_select :category_id, all_categories, :id, :name, {include_blank: "Select a Category"}%>
+
+  </div>
 
   <div>
     <%= form.label :image %>
@@ -30,8 +45,6 @@
   </div>
 
   <br><br>
-  <%= form.label :category_id %>
-  <%= form.collection_select(:category_id, Category.all, :id, :name, prompt: 'Select a category') %>
 
   <p><strong>Item translations fields</strong>  </p>
   <div>
@@ -69,7 +82,10 @@
     </div>
 
   </div>
-  <div class="actions">
+
+  <div>
+    <br><br>
     <%= form.submit %>
   </div>
+
 <% end %>

@@ -41,6 +41,6 @@ class CategoryI18nsController < ApplicationController
   end
 
   def category_i18n
-    params.require(:voice).permit(:name, :division_id, :locale)
+    params.require(:voice).permit(:name, :category_id, :locale)
   end
 end

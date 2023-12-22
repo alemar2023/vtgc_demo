@@ -1,11 +1,12 @@
 <div id= "<%= dom_id collection %>">
 
   <div class="img" style="padding:5px;">
+
     <%= link_to image_tag(collection.image_as_thumbnail), collection.image %>
   </div>
   <p>
     <strong>Name:</strong>
-    <%= collection.name %>
+    <%= collection.encoll_translation&.name if collection.encoll_translation %>
   </p>
   <p>
     <strong>Brand:</strong>
@@ -21,10 +22,6 @@
 
 
 
-<br><br>
-<% collection.pictures_as_thumbanails.each do |picture| %>
 
-  <%= link_to image_tag(picture), picture  %>
-<% end %>
 
 </div>

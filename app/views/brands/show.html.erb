@@ -4,7 +4,7 @@
 <ul>
   <% @collections.each do |collection| %>
     <div style="display: flex;align-items: center ;border-bottom:1px solid #cdcdcd;">
-    <%= link_to image_tag(collection.image_as_thumbnail_small), collection %>
+    <%= link_to image_tag(collection.image_as_thumbnail), collection %>
     <li><%= collection.name %></li>
 
     </div>

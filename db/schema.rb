@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_27_155253) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_28_135835) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -57,6 +57,18 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_27_155253) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_areas_on_name", unique: true
+  end
+
+  create_table "brand_i18ns", force: :cascade do |t|
+    t.bigint "brand_id", null: false
+    t.string "name", null: false
+    t.string "locale", default: "en"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["brand_id"], name: "index_brand_i18ns_on_brand_id"
+    t.index ["locale", "brand_id"], name: "index_brand_i18ns_on_locale_and_brand_id", unique: true
+    t.index ["locale"], name: "index_brand_i18ns_on_locale"
+    t.index ["name"], name: "index_brand_i18ns_on_name"
   end
 
   create_table "brands", force: :cascade do |t|
@@ -141,7 +153,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_27_155253) do
     t.bigint "area_id", null: false
     t.index ["area_id"], name: "index_items_on_area_id", unique: true
     t.index ["brand_id"], name: "index_items_on_brand_id"
-    t.index ["category_id"], name: "index_items_on_category_id", unique: true
+    t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["collection_id"], name: "index_items_on_collection_id"
   end
 
@@ -176,7 +188,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_27_155253) do
     t.datetime "updated_at", null: false
     t.string "first_name"
     t.string "last_name"
-    t.string "role", default: "User", null: false
+    t.string "role", default: "user", null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
